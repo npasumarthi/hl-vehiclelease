@@ -1,0 +1,61 @@
+/**
+ * New query file
+ */
+/** Sample queries for Commodity Trading business network
+*/
+
+query getVehicleHistory {
+  description: "Get Viehcle History"
+  statement:
+      SELECT org.acme.dmi.Trip
+          WHERE (asset == _$asset AND type == "C")
+}
+
+
+query getAllClosedTripsforUser {
+  description: "Get all closed Trips  for  user"
+  statement:
+      SELECT org.acme.dmi.Trip
+          WHERE (user == _$user AND type == "C")
+}
+
+
+query checkforUserCurrentTrip {
+  description: "Check if your has current trip"
+  statement:
+      SELECT org.acme.dmi.VehicleAsset
+          WHERE (user == _$user AND isAvaible == "N")
+}
+
+query getUserCurrentTrip {
+  description: "Get User current Trip"
+  statement:
+      SELECT org.acme.dmi.Trip
+          WHERE (user == _$user AND type == "O") LIMIT 1
+}
+
+
+query getVehicleAssetByOwner {
+  description: "Get all vehicleAsset based on their owner"
+  statement:
+      SELECT org.acme.dmi.VehicleAsset
+          WHERE (owner == _$owner)
+}
+
+
+query getVehicleClosedTrips {
+  description: "Get all vehicle Closed Trips"
+  statement:
+      SELECT org.acme.dmi.Trip
+          WHERE (asset == _$asset AND type == "C")
+}
+
+query getAvailableCars {
+  description: "Get Available Cars"
+  statement:
+      SELECT org.acme.dmi.VehicleAsset
+          WHERE (isAvaible == "Y")
+}
+
+
+

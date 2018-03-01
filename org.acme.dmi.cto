@@ -1,0 +1,68 @@
+/**
+ * Write your model definitions here
+ */
+
+namespace org.acme.dmi
+
+asset VehicleAsset identified by assetId {
+  o String assetId 
+  o String vehicleNumber
+  o String vehicleType
+  o Integer nooftrips
+  o String isAvaible
+  o String capactity
+  o String priceperday
+  o String maxKmperDay
+  o String extraChargeperKM
+  o String insuranceNumber
+  o String vehicleModel
+  o Integer oDoMeter
+  o String colour
+  o String vehicleGearType
+  o String fuelType
+  o String currentLocation
+  o DateTime lastServiceDone optional
+  o String approximateMillage optional
+  --> Owner owner
+  --> User user optional
+}
+
+
+participant User  identified by emailId {
+  o String emailId
+  o String firstName
+  o String lastName
+  o String phoneNumber
+  o String drivingLicense
+  o String aadharId
+  o String address
+}
+
+
+
+participant Owner identified by emailId {
+  o String emailId
+  o String firstName
+  o String lastName
+  o String address
+  o String phoneNumber
+  
+}
+
+
+transaction Trip {
+  o String type
+  o String tripId optional
+  --> VehicleAsset asset
+  --> User user optional
+  o DateTime startDate
+  o DateTime endDate 
+  o String totalCost  optional
+  o String defaultAmount optional
+  o String extraAmount optional
+  o Integer totalDistance optional
+  o String taxAmount optional
+  o String review optional
+  o String rating optional
+  
+}
